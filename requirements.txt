@@ -1,0 +1,4 @@
+# Python dependencies for aurora prediction
+onnxruntime
+numpy
+pandas
