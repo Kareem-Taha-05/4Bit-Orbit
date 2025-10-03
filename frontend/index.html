@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Aether Phoenix - Space Weather Awareness</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <!-- Animated Stars Background -->
+    <div class="stars-container" id="starsContainer"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Project Aether Phoenix</a>
+            <ul class="nav-links" id="navLinks">
+                <!-- Reordered navigation tabs -->
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('stories')">Aether's Tales</a></li>
+                <li><a href="#" onclick="showPage('games')">Games</a></li>
+                <li><a href="#" onclick="showPage('comics')">Comics</a></li>
+                <li><a href="#" onclick="showPage('prediction')">Prediction Tool</a></li>
+                <li><a href="#" onclick="showPage('survey')">Survey</a></li>
+            </ul>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <!-- Reorganized hero section with cleaner layout -->
+            <div class="hero">
+                <h1>Project Aether Pheonix</h1>
+                <p>Spreading Knowledge About Space Weather With Innovative And Engaging Storytelling</p>
+            </div>
+            
+            <!-- Created dedicated container for organized home content -->
+            <div class="home-content">
+                <!-- Live Risk Dashboard as prominent featured section -->
+                <div class="featured-section">
+                    <div class="space-weather-dashboard">
+                        <h2 class="dashboard-title">Space Weather — Live Risk</h2>
+                        <div class="dashboard-content">
+                            <div class="kp-display">
+                                <div class="kp-value-container">
+                                    <div id="kpValue" class="kp-value">--</div>
+                                    <div id="kpIndicator" class="kp-indicator"></div>
+                                </div>
+                                <div id="kpLevel" class="kp-level">Loading...</div>
+                            </div>
+                            <div id="kpTimestamp" class="kp-timestamp">Fetching data...</div>
+                            <p class="dashboard-info">
+                                The Kp index measures geomagnetic activity. Higher values indicate stronger space weather that can affect satellites, power grids, and communications.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mission section with clear purpose -->
+                <div class="mission-section">
+                    <h2>Our Mission</h2>
+                    <p>Space weather events, driven by solar activity, can significantly impact our technology-dependent society. From GPS disruptions affecting precision farming to power grid vulnerabilities during geomagnetic storms, the effects of space weather are far-reaching and often underestimated.</p>
+                    <p>Project Aether Phoenix aims to bridge the awareness gap by providing accessible tools, educational resources, and predictive capabilities to help individuals and organizations prepare for and respond to space weather events.</p>
+                </div>
+                
+                <!-- Feature cards with better organization -->
+                <div class="features-section">
+                    <h2>What We Offer</h2>
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-icon"><i class="fas fa-satellite"></i></div>
+                            <h3>Technology Impact</h3>
+                            <p>Learn how space weather affects satellites, GPS systems, and communication networks that we rely on daily.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                            <h3>Predictive Analytics</h3>
+                            <p>Advanced machine learning models help forecast space weather events and their potential impacts.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <h3>Education & Awareness</h3>
+                            <p>Interactive tools and engaging content make space weather science accessible to everyone.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- NASA embed as dedicated exploration section -->
+                <div class="exploration-section">
+                    <h2>Explore Our Solar System</h2>
+                    <p>Take an interactive journey through space with NASA's Solar System Eyes. Watch the Parker Solar Probe's historic mission to touch the Sun!</p>
+                    <div class="nasa-iframe-container">
+                        <iframe src="https://eyes.nasa.gov/apps/solar-system/#/story/psp_perihelion?slide=slide_3&shareButton=false" allowfullscreen title="NASA Solar System Eyes - Parker Solar Probe"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Call to action section -->
+                <div class="cta-section">
+                    <h2>Ready to Learn More?</h2>
+                    <p>Explore our interactive tools, chat with Aether the Phoenix, or test your knowledge with our space weather games.</p>
+                    <div class="cta-buttons">
+                        <button class="cta-button" onclick="showPage('prediction')">
+                            <i class="fas fa-globe"></i> Try Prediction Tool
+                        </button>
+                        <button class="cta-button secondary" onclick="showPage('stories')">
+                            <i class="fas fa-comments"></i> Chat with Aether
+                        </button>
+                        <button class="cta-button secondary" onclick="showPage('games')">
+                            <i class="fas fa-gamepad"></i> Play Games
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Survey Page -->
+        <section id="survey" class="page">
+            <div class="survey-welcome-container">
+                <div class="survey-hero">
+                    <div class="survey-icon">
+                        <i class="fas fa-feather-alt"></i>
+                    </div>
+                    <h2>Project Aether</h2>
+                    <h3>Hello, Explorers!</h3>
+                </div>
+                
+                <div class="survey-content">
+                    <div class="survey-message card">
+                        <p class="survey-intro">Welcome to Aether! In this project, we need your help to tell more stories about space weather.</p>
+                        
+                        <p class="survey-description">It's not like the weather forecast we see every day—but a whole new dimension to discover. Some really big events scale up to contribute to our Planet Earth's formation!</p>
+                        
+                        <div class="survey-cta">
+                            <p class="survey-call">Please let us know more about your background and help us deliver knowledge to everyone!</p>
+                            
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeC3DOWHiwHJK6mr-ZtX8p5nnhAa3_sxQMn7SOnB4D1VIMjxg/viewform" target="_blank" class="survey-button">
+                                <i class="fas fa-clipboard-list"></i>
+                                Take the Survey
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="survey-features">
+                        <div class="survey-feature-card">
+                            <i class="fas fa-user-astronaut"></i>
+                            <h4>Share Your Story</h4>
+                            <p>Tell us about your background and interests</p>
+                        </div>
+                        
+                        <div class="survey-feature-card">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>Shape Our Content</h4>
+                            <p>Help us create better educational materials</p>
+                        </div>
+                        
+                        <div class="survey-feature-card">
+                            <i class="fas fa-globe-americas"></i>
+                            <h4>Spread Awareness</h4>
+                            <p>Join us in making space weather knowledge accessible</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Aether's Tales Page -->
+        <section id="stories" class="page">
+            <div class="text-center mb-2">
+                <h2 style="font-size: 2.5rem; color: var(--aurora-green); margin-bottom: 1rem;">Aether's Tales</h2>
+                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">Chat with Aether the Phoenix to learn about space weather events and their impacts.</p>
+            </div>
+            
+            <div class="aether-chat card">
+                <div class="phoenix-avatar">
+                    <img id="phoenixClosed" src="assets/phoenix_closed.png" alt="Aether closed" />
+                    <img id="phoenixOpen" src="assets/phoenix_open.png" alt="Aether speaking" style="display:none;" />
+                </div>
+                <div class="chat-area">
+                    <div id="chatWindow"></div>
+                    <form id="phoenixForm">
+                        <input id="userInput" type="text" placeholder="Ask Aether about space weather..." />
+                        <button type="submit">Ask Aether</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Added Story Library section below chat -->
+            <div class="story-library">
+                <h2 class="story-library-title">Aether's Story Library</h2>
+                <p class="story-library-subtitle">Click on a story card to hear Aether tell you a tale of cosmic events!</p>
+                
+                <div class="story-cards-grid">
+                    <!-- Story 1: The Sun's Mighty Cry -->
+                    <div class="story-card" onclick="openStoryModal('story1')">
+                        <div class="story-card-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h3>The Sun's Mighty Cry</h3>
+                        <p>A tale of the X1.1 solar flare that shook the heavens on May 27, 2025.</p>
+                    </div>
+                    
+                    <!-- Story 2: When the Sun Exhales -->
+                    <div class="story-card" onclick="openStoryModal('story2')">
+                        <div class="story-card-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <h3>When the Sun Exhales</h3>
+                        <p>The mighty breath of coronal mass ejections that cross the void.</p>
+                    </div>
+                    
+                    <!-- Story 3: Arrows Swifter Than Light -->
+                    <div class="story-card" onclick="openStoryModal('story3')">
+                        <div class="story-card-icon">
+                            <i class="fas fa-meteor"></i>
+                        </div>
+                        <h3>Arrows Swifter Than Light</h3>
+                        <p>Solar particles racing across space in less than an hour.</p>
+                    </div>
+                    
+                    <!-- Story 4: The Trembling Shield -->
+                    <div class="story-card" onclick="openStoryModal('story4')">
+                        <div class="story-card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>The Trembling Shield</h3>
+                        <p>When Earth's ionosphere rang like a bell struck by fire.</p>
+                    </div>
+                    
+                    <!-- Story 5: Threads of Confusion -->
+                    <div class="story-card" onclick="openStoryModal('story5')">
+                        <div class="story-card-icon">
+                            <i class="fas fa-satellite-dish"></i>
+                        </div>
+                        <h3>Threads of Confusion</h3>
+                        <p>The day GPS signals bent and scattered like leaves in a storm.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Added story modal for displaying full story text and audio -->
+            <div id="storyModal" class="story-modal" onclick="closeStoryModal(event)">
+                <div class="story-modal-content" onclick="event.stopPropagation()">
+                    <button class="story-modal-close" onclick="closeStoryModal()">&times;</button>
+                    <h2 id="storyTitle" class="story-modal-title"></h2>
+                    <div class="story-audio-player">
+                        <audio id="storyAudio" controls>
+                            <source id="storyAudioSource" src="" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div id="storyText" class="story-modal-text"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Games Page -->
+        <section id="games" class="page">
+            <div class="games-container">
+                <h2 style="font-size: 2.5rem; color: var(--aurora-green); margin-bottom: 1rem;">Interactive Space Weather Games</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Learn about space weather through engaging mini-games and simulations.</p>
+                
+                <!-- Replaced canvas game with exe download section -->
+                <div class="card game-download-card">
+                    <div class="game-download-header">
+                        <i class="fas fa-rocket" style="font-size: 4rem; color: var(--aurora-pink); margin-bottom: 1rem;"></i>
+                        <h3 style="color: var(--aurora-pink); margin-bottom: 1rem; font-size: 2rem;">Space Weather Defender</h3>
+                        <p style="font-size: 1.1rem; margin-bottom: 2rem;">Navigate your spaceship through space, avoid planets, and answer quiz questions to learn about space weather!</p>
+                    </div>
+                    
+                    <div class="game-features">
+                        <div class="feature-item">
+                            <i class="fas fa-gamepad"></i>
+                            <span>Exciting space exploration gameplay</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-brain"></i>
+                            <span>Educational quiz questions</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Challenge yourself and learn</span>
+                        </div>
+                    </div>
+                    
+                    <div class="game-download-section">
+                        <a href="game/Aether.exe" download class="download-game-button">
+                            <i class="fas fa-download"></i> Download Game
+                        </a>
+                        <p class="download-note">Windows executable • Requires Windows 7 or higher</p>
+                    </div>
+                    
+                    <div class="game-instructions">
+                        <h4>How to Play:</h4>
+                        <ul>
+                            <li><strong>W/↑</strong> - Thrust forward</li>
+                            <li><strong>A/←</strong> - Rotate left</li>
+                            <li><strong>D/→</strong> - Rotate right</li>
+                            <li><strong>Mouse</strong> - Aim</li>
+                            <li><strong>Click/Space</strong> - Shoot</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="cards-grid mt-2">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Aurora Shield</h3>
+                        <p>Manage power grid operations during a geomagnetic storm. Balance load distribution to prevent cascading failures.</p>
+                        <button class="cta-button" style="margin-top: 1rem;">Coming Soon</button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-route"></i></div>
+                        <h3>Flight Path Challenge</h3>
+                        <p>Plan safe flight routes during space weather events while minimizing radiation exposure and delays.</p>
+                        <button class="cta-button" style="margin-top: 1rem;">Coming Soon</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Prediction Tool Page -->
+        <section id="prediction" class="page">
+            <div class="prediction-container">
+                <h2 style="font-size: 2.5rem; color: var(--aurora-green); margin-bottom: 1rem; text-align: center;">Space Weather Prediction for Kids</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; text-align: center;">Discover what's happening in space with our AI-powered predictions!</p>
+                
+                <!-- Aurora Predictor section -->
+                <div class="card">
+                    <div class="prediction-header">
+                        <i class="fas fa-star" style="font-size: 2rem; color: var(--aurora-pink);"></i>
+                        <h3 style="color: var(--aurora-pink); margin-bottom: 0.5rem;">Aurora Predictor</h3>
+                    </div>
+                    <p style="margin-bottom: 1.5rem;">Click anywhere on Earth to see if auroras will appear there!</p>
+                    
+                    <!-- Added 3D Earth container -->
+                    <div class="earth-3d-container">
+                        <div id="earth3D" class="earth-canvas"></div>
+                    </div>
+                    
+                    <button class="predict-button" onclick="predictAurora()" id="predictAuroraBtn" disabled>
+                        <i class="fas fa-magic"></i> Predict Aurora
+                    </button>
+                    
+                    <div id="auroraResults" class="aurora-results" style="display: none;">
+                        <!-- Added AI-generated sky image display -->
+                        <div class="aurora-sky-image">
+                            <h4 style="color: var(--aurora-green); margin-bottom: 1rem;">Your Aurora Sky</h4>
+                            <div id="skyImageContainer" class="sky-image-container">
+                                <div class="loading-spinner">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    <p>Generating your aurora sky...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aurora-info">
+                            <h4 style="color: var(--aurora-green); margin-bottom: 1rem;">Aurora Forecast</h4>
+                            <div class="aurora-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-bolt"></i>
+                                    <span id="auroraIntensity">Calculating...</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-palette"></i>
+                                    <span id="auroraColors">Calculating...</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span id="auroraVisibility">Calculating...</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span id="auroraLocation">Select a location</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enhanced prediction results section -->
+                <div id="predictionResults" class="prediction-results" style="display: none;">
+                    <div class="cards-grid">
+                        <div class="card">
+                            <h3 style="color: var(--aurora-green);">Storm Probability</h3>
+                            <div class="probability-display">
+                                <div class="probability-circle">
+                                    <svg viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(100, 255, 218, 0.2)" stroke-width="8"/>
+                                        <circle id="probabilityCircle" cx="50" cy="50" r="45" fill="none" stroke="var(--aurora-green)" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="283" transform="rotate(-90 50 50)"/>
+                                    </svg>
+                                    <div class="probability-text">
+                                        <span id="probabilityValue">0%</span>
+                                    </div>
+                                </div>
+                                <p id="stormCategory" style="text-align: center; margin-top: 1rem; font-size: 1.2rem; font-weight: 600;">Calculating...</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <h3 style="color: var(--aurora-pink);">Impact Timeline</h3>
+                            <div class="timeline-chart">
+                                <div class="timeline-item">
+                                    <div class="timeline-time">Now</div>
+                                    <div class="timeline-bar" id="impactNow"></div>
+                                    <div class="timeline-label">Current</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-time">+6h</div>
+                                    <div class="timeline-bar" id="impact6h"></div>
+                                    <div class="timeline-label">6 Hours</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-time">+12h</div>
+                                    <div class="timeline-bar" id="impact12h"></div>
+                                    <div class="timeline-label">12 Hours</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-time">+24h</div>
+                                    <div class="timeline-bar" id="impact24h"></div>
+                                    <div class="timeline-label">24 Hours</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-time">+48h</div>
+                                    <div class="timeline-bar" id="impact48h"></div>
+                                    <div class="timeline-label">48 Hours</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 style="color: var(--soft-purple); margin-bottom: 1rem;">System Risk Assessment</h3>
+                        <div id="riskMetrics">
+                            <div class="risk-item">
+                                <div class="risk-header">
+                                    <i class="fas fa-satellite"></i>
+                                    <strong>GPS & Navigation Systems</strong>
+                                </div>
+                                <div class="risk-bar-container">
+                                    <div class="risk-bar" id="gpsRiskBar"></div>
+                                </div>
+                                <span id="gpsRisk" class="risk-label">Calculating...</span>
+                            </div>
+                            
+                            <div class="risk-item">
+                                <div class="risk-header">
+                                    <i class="fas fa-bolt"></i>
+                                    <strong>Power Grid Infrastructure</strong>
+                                </div>
+                                <div class="risk-bar-container">
+                                    <div class="risk-bar" id="powerRiskBar"></div>
+                                </div>
+                                <span id="powerRisk" class="risk-label">Calculating...</span>
+                            </div>
+                            
+                            <div class="risk-item">
+                                <div class="risk-header">
+                                    <i class="fas fa-broadcast-tower"></i>
+                                    <strong>Radio Communications</strong>
+                                </div>
+                                <div class="risk-bar-container">
+                                    <div class="risk-bar" id="commRiskBar"></div>
+                                </div>
+                                <span id="commRisk" class="risk-label">Calculating...</span>
+                            </div>
+                            
+                            <div class="risk-item">
+                                <div class="risk-header">
+                                    <i class="fas fa-plane"></i>
+                                    <strong>Aviation & Spacecraft</strong>
+                                </div>
+                                <div class="risk-bar-container">
+                                    <div class="risk-bar" id="aviationRiskBar"></div>
+                                </div>
+                                <span id="aviationRisk" class="risk-label">Calculating...</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 style="color: var(--aurora-green); margin-bottom: 1rem;">Recommended Actions</h3>
+                        <div id="recommendations" class="recommendations-list">
+                            <!-- Recommendations will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Comics Page -->
+        <section id="comics" class="page">
+            <div class="comics-container">
+                <h2 style="font-size: 2.5rem; color: var(--aurora-green); margin-bottom: 1rem; text-align: center;">Aether's Comic Adventure</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">Follow Aether the Phoenix through an illustrated journey of space weather and cosmic adventures!</p>
+                
+                <div class="comic-panels">
+                    <img src="assets/comics/1.png" alt="Comic Panel 1" class="comic-panel" />
+                    <img src="assets/comics/2.png" alt="Comic Panel 2" class="comic-panel" />
+                    <img src="assets/comics/3.png" alt="Comic Panel 3" class="comic-panel" />
+                    <img src="assets/comics/4.png" alt="Comic Panel 4" class="comic-panel" />
+                    <img src="assets/comics/5.png" alt="Comic Panel 5" class="comic-panel" />
+                    <img src="assets/comics/6.png" alt="Comic Panel 6" class="comic-panel" />
+                    <img src="assets/comics/7.png" alt="Comic Panel 7" class="comic-panel" />
+                    <img src="assets/comics/8.png" alt="Comic Panel 8" class="comic-panel" />
+                    <img src="assets/comics/9.png" alt="Comic Panel 9" class="comic-panel" />
+                    <img src="assets/comics/10.png" alt="Comic Panel 10" class="comic-panel" />
+                    <img src="assets/comics/11.png" alt="Comic Panel 11" class="comic-panel" />
+                    <img src="assets/comics/12.png" alt="Comic Panel 12" class="comic-panel" />
+                    <img src="assets/comics/13.png" alt="Comic Panel 13" class="comic-panel" />
+                    <img src="assets/comics/14.png" alt="Comic Panel 14" class="comic-panel" />
+                    <img src="assets/comics/15.png" alt="Comic Panel 15" class="comic-panel" />
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // Wait for Three.js to be fully loaded before initializing 3D models
+        window.addEventListener('load', function() {
+            console.log('[v0] Three.js loaded:', typeof THREE !== 'undefined');
+            console.log('[v0] Initializing 3D models...');
+        });
+    </script>
+    <script src="js/earth3d.js"></script>
+    <script src="js/earth3d-space.js"></script>
+    <script src="js/sun3d.js"></script>
+    <script src="js/phoenix.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
