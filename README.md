@@ -162,17 +162,19 @@ Project Aether aims to:
 - Provide interactive learning experiences
 - Collect data on space weather knowledge gaps
 
-## 🤝 Contributing
+## 👥 Authors
 
-Contributions are welcome! Please feel free to submit issues or pull requests.
+- [Kareem Taha](https://github.com/Kareem-Taha-05)  
+- [Bassel Shaheen](https://github.com/BasselShaheen06)  
+- [Karim Hassan](https://github.com/karimhassan-808)  
+- [Hakeem Taha](https://github.com/Hakeem-Taha-06)  
+
+---
 
 ## 📄 License
 
-[Add your license information here]
+This project is licensed under the [MIT License](LICENSE).
 
-## 👥 Authors
-
-[Add author information here]
 
 ## 🙏 Acknowledgments
 
