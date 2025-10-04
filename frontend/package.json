@@ -5,9 +5,13 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "build": "npm run build"
   },
-  "keywords": ["express", "static-server"],
+  "keywords": [
+    "express",
+    "static-server"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
