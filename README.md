@@ -80,18 +80,20 @@ Project-Aether/
 
 ### Prerequisites
 
-- **Node.js** (v14 or higher)
+- **Node.js** (v14 or higher) [Link Here](https://nodejs.org/dist/v22.20.0/node-v22.20.0-x64.msi)
 - **npm** (comes with Node.js)
+
 - **Python dependencies** for ML model:
   - `numpy>=1.21.0`
   - `scikit-learn>=1.0.0`
+  
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd Project-Aether
+   git clone https://github.com/Kareem-Taha-05/4Bit-Orbit
+   cd 4Bit-Orbit
    ```
 
 2. **Install backend dependencies**
